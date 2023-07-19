@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+
+    [SerializeField] Damage damage = new Damage(10, DamageType.Bullet);
     // Start is called before the first frame update
     void Start()
     {
@@ -18,15 +20,16 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        var player = collisionInfo.collider.GetComponent<health>();
-
-        if(player != null)
+  
+        if (collisionInfo.gameObject.TryGetComponent(out IDamageable damageableObject))
         {
+            damageableObject.ApplyDamage(damage);
 
+            print("Detected collision between " + gameObject.name + " and " + collisionInfo.collider.name);
+            print("There are " + collisionInfo.contacts.Length + " point(s) of contacts");
+            print("Their relative velocity is " + collisionInfo.relativeVelocity);
+            //damageableObject.Damage(explosionDamage);
         }
 
-        print("Detected collision between " + gameObject.name + " and " + collisionInfo.collider.name);
-        print("There are " + collisionInfo.contacts.Length + " point(s) of contacts");
-        print("Their relative velocity is " + collisionInfo.relativeVelocity);
     }
 }

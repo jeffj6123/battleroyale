@@ -2,27 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Usable
+public interface IUsable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void StartUse();
 
-    void startUse()
-    {
-
-    }
-
-    void endUse()
-    {
-
-    }
+    public void EndUse();
 }

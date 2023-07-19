@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class health : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDamageable
 {
 
     public double currentHealth = 100;
@@ -19,12 +19,40 @@ public class health : MonoBehaviour
         
     }
 
-    void applyDamage(double damage) {
+    public void ApplyDamage(Damage damage)
+    {
         //TODO apply modifications 
-        this.currentHealth -= damage;
+        this.currentHealth -= damage.amount;
 
-        if(this.currentHealth < 0) {
+        if (this.currentHealth < 0)
+        {
             //TODO report to game manager
         }
     }
+
+}
+
+public interface IDamageable
+{
+    public void ApplyDamage(Damage damage);
+}
+
+public enum DamageType
+{
+    Melee,
+    Bullet,
+    Fire
+}
+
+public struct Damage
+{
+    public int amount;
+    public DamageType type;
+
+    public Damage(int amount, DamageType type)
+    {
+        this.amount = amount;
+        this.type = type;
+    }
+
 }
