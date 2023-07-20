@@ -39,5 +39,6 @@ public class Movement : MonoBehaviour
         //Apply the movement vector to the current position, which is
         //multiplied by deltaTime and speed for a smooth MovePosition
         m_Rigidbody.MovePosition(transform.position + m_Input * Time.deltaTime * m_Speed);
+        transform.forward = Vector3.Slerp(transform.forward, m_Input, Time.deltaTime * 10f);
     }
 }

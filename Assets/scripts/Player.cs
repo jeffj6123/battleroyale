@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
     [SerializeField] public readonly string id;
-    public IUsable usable1;
-    public IUsable usable2;
-    public Movement movement;
+    public Usable Usable;
+    private Movement movement;
 
     public Transform UsablePosition1;
     //public Transform UsablePosition2;
@@ -21,21 +19,32 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+     if(Usable != null)
+        {
+            SetUsable(Usable);
+        }   
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.E)) {
+            if(Usable != null)
+            {
+                Usable.StartUse();
+            }
+        }
     }
 
 
-    public void SetUsable(GameObject obj)
+    public void SetUsable(Usable usable)
     {
-        if (obj.TryGetComponent(out IUsable usable))
+        //TODO clean up existing Usable
+        Usable = usable;
+        usable.spawn(UsablePosition1);
+        /*if (obj.TryGetComponent(out IUsable usable))
         {
-            usable1 = usable;
-        }
+            Usable = usable;
+        }*/
     }
 }

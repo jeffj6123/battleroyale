@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
-
+    public string id;
     public double currentHealth = 100;
     public double maxHealth = 100;
     // Start is called before the first frame update
     void Start()
     {
-        
+        id = GetComponent<Player>().id;
     }
 
     // Update is called once per frame
@@ -44,15 +44,16 @@ public enum DamageType
     Fire
 }
 
-public struct Damage
+public class Damage
 {
     public int amount;
     public DamageType type;
-
-    public Damage(int amount, DamageType type)
+    public string source;
+    public Damage(int amount, DamageType type, string source)
     {
         this.amount = amount;
         this.type = type;
+        this.source = source;
     }
 
 }

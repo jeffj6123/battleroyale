@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour, IUsable
 {
-    public GameObject bullet;
+    public GameObject Bullet;
+    public Transform launchPosition;
     //[SerializeField] Bullet bullet;
     public int maxAmmo = 10;
     int currentAmmo = 10;
@@ -17,7 +18,7 @@ public class Gun : MonoBehaviour, IUsable
 
     public void StartUse()
     {
-        if(currentCooldown < 0 && currentAmmo > 0)
+        if(currentCooldown <= 0 && currentAmmo > 0)
         {
             Fire();
         }
@@ -26,8 +27,23 @@ public class Gun : MonoBehaviour, IUsable
     public void Fire()
     {
         currentAmmo -= 1;
-        currentCooldown -= cooldown;
-        Instantiate(bullet);
+        currentCooldown = cooldown;
+        var bullet = Instantiate(Bullet);
+        bullet.transform.SetPositionAndRotation(launchPosition.position, launchPosition.rotation);
+        bullet.GetComponent<Bullet>().OnCollsion += HandleBulletCollision;
+        //bullet.transform.ro //set(launchPosition.position, launchPosition.rotation) = launchPosition;
+    }
+
+    private void HandleBulletCollision(Bullet Bullet, Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out IDamageable damageableObject))
+        {
+            damageableObject.ApplyDamage(damage);
+
+            print("Detected collision between " + gameObject.name + " and " + other.name);
+            //damageableObject.Damage(explosionDamage);
+        }
+
     }
 
     // Start is called before the first frame update
