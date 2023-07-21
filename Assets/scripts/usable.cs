@@ -2,11 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum  UsableType
+{
+    Potion,
+    MeleeWeapon,
+    RangedWeapon
+}
+
 public interface IUsable
 {
     //TODO consider moving this?
-    public Player player { get; set; }
-    public void StartUse();
+
+    public UsableType Usable { get; set; }
+    public void StartUse(Player player);
 
     public void EndUse();
 }
@@ -20,12 +28,12 @@ public class Usable: ScriptableObject
     public Vector3 SpawnRotation;
     private GameObject Model;
     private IUsable usable;
-
+    private Player player;
     public void SpawnWithPlayer(Transform parent, Player player)
     {
-        usable = Model.GetComponent<IUsable>();
-        usable.player = player;
         spawn(parent);
+        usable = Model.GetComponent<IUsable>();
+        this.player = player;
     }
  
     public void spawn(Transform Parent)
@@ -37,7 +45,7 @@ public class Usable: ScriptableObject
 
     public void StartUse()
     {
-        usable.StartUse();
+        usable.StartUse(player);
     }
 
     public void EndUse()

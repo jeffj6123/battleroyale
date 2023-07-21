@@ -5,20 +5,22 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Rigidbody m_Rigidbody;
+    private Animator Anim;
     public float m_Speed = 5f;
 
     void Start()
     {
         //Fetch the Rigidbody from the GameObject with this script attached
         m_Rigidbody = GetComponent<Rigidbody>();
+        Anim = GetComponent<Animator>();
     }
 
     void FixedUpdate()
     {
         //Store user input as a movement vector
 
-        int vertical = 0;
-        int horizontal = 0;
+        float vertical = 0;
+        float horizontal = 0;
 
         if(Input.GetKey("w")) {
             vertical += 1;
@@ -35,6 +37,7 @@ public class Movement : MonoBehaviour
 
         Vector3 m_Input = Vector3.Normalize(new Vector3(horizontal, 0, vertical));
 
+        Anim.SetFloat("speed", Mathf.Abs(vertical + horizontal));
 
         //Apply the movement vector to the current position, which is
         //multiplied by deltaTime and speed for a smooth MovePosition

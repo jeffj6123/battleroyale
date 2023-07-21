@@ -40,8 +40,9 @@ public class Player : MonoBehaviour
     public void SetUsable(Usable usable)
     {
         //TODO clean up existing Usable
-        Usable = usable;
         usable.SpawnWithPlayer(UsablePosition1, this);
+        Usable = usable;
+
         /*if (obj.TryGetComponent(out IUsable usable))
         {
             Usable = usable;
