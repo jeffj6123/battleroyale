@@ -6,6 +6,7 @@ public class Gun : MonoBehaviour, IUsable
 {
     public GameObject Bullet;
     public Transform launchPosition;
+    public Player player { get; set; }
     //[SerializeField] Bullet bullet;
     public int maxAmmo = 10;
     int currentAmmo = 10;
@@ -31,14 +32,13 @@ public class Gun : MonoBehaviour, IUsable
         var bullet = Instantiate(Bullet);
         bullet.transform.SetPositionAndRotation(launchPosition.position, launchPosition.rotation);
         bullet.GetComponent<Bullet>().OnCollsion += HandleBulletCollision;
-        //bullet.transform.ro //set(launchPosition.position, launchPosition.rotation) = launchPosition;
     }
 
     private void HandleBulletCollision(Bullet Bullet, Collider other)
     {
         if (other.gameObject.TryGetComponent(out IDamageable damageableObject))
         {
-            damageableObject.ApplyDamage(damage);
+            damageableObject.ApplyDamage(new Damage(10, DamageType.Bullet, player.id));
 
             print("Detected collision between " + gameObject.name + " and " + other.name);
             //damageableObject.Damage(explosionDamage);

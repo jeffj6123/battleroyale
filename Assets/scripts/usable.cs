@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IUsable
 {
+    //TODO consider moving this?
+    public Player player { get; set; }
     public void StartUse();
 
     public void EndUse();
