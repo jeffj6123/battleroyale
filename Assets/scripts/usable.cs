@@ -21,12 +21,18 @@ public class Usable: ScriptableObject
     private GameObject Model;
     private IUsable usable;
 
+    public void SpawnWithPlayer(Transform parent, Player player)
+    {
+        usable = Model.GetComponent<IUsable>();
+        usable.player = player;
+        spawn(parent);
+    }
+ 
     public void spawn(Transform Parent)
     {
         Model = Instantiate(ModelPrefab);
         Model.transform.SetParent(Parent, false);
         Model.transform.SetLocalPositionAndRotation(SpawnPoint, Quaternion.Euler(SpawnRotation));
-        usable = Model.GetComponent<IUsable>();
     }
 
     public void StartUse()
