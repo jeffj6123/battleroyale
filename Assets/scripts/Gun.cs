@@ -7,7 +7,7 @@ public class Gun : MonoBehaviour, IUsable
     public GameObject Bullet;
     public Transform launchPosition;
     public Player player { get; set; }
-    public UsableType Usable { get; set; }
+    public UsableType Usable { get { return UsableType.RangedWeapon; } set { } }
     public int maxAmmo = 10;
     int currentAmmo = 10;
     double cooldown = 1;

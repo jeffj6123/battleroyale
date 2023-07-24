@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: gun
   m_EditorClassIdentifier: Assembly-CSharp::Usable
   Name: Gun
-  ModelPrefab: {fileID: 1221143403057782185, guid: 3f431ea356616a749bc9efbba8e7f9ef, type: 3}
-  SpawnPoint: {x: 0, y: 0.24, z: 1}
-  SpawnRotation: {x: 0, y: 0, z: 0}
+  ModelPrefab: {fileID: 8118038329675189344, guid: b6ffc9321a8f88e4893dd8d630b662c0, type: 3}
+  SpawnPoint: {x: -0.198, y: 0.104, z: 0.015}
+  SpawnRotation: {x: 0, y: 90, z: 0}
