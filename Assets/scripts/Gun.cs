@@ -7,14 +7,24 @@ public class Gun : MonoBehaviour, IUsable
     public GameObject Bullet;
     public Transform launchPosition;
     public Player player { get; set; }
-    //[SerializeField] Bullet bullet;
+    public UsableType Usable { get; set; }
     public int maxAmmo = 10;
     int currentAmmo = 10;
     double cooldown = 1;
     double currentCooldown = 0;
+    
+    public void Init(Player player)
+    {
+        this.player = player;
+    }
     public void EndUse()
     {
         
+    }
+
+    public bool CanUse()
+    {
+        return true;
     }
 
     public void StartUse()

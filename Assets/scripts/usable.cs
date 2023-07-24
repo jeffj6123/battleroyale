@@ -14,9 +14,13 @@ public interface IUsable
     //TODO consider moving this?
 
     public UsableType Usable { get; set; }
-    public void StartUse(Player player);
+    public void StartUse();
 
     public void EndUse();
+
+    public bool CanUse();
+
+    public void Init(Player player);
 }
 
 [CreateAssetMenu(fileName = "Usable", menuName = "Usables/Usable", order = 0)]
@@ -27,31 +31,39 @@ public class Usable: ScriptableObject
     public Vector3 SpawnPoint;
     public Vector3 SpawnRotation;
     private GameObject Model;
-    private IUsable usable;
+    public IUsable usable;
     private Player player;
     public void SpawnWithPlayer(Transform parent, Player player)
     {
-        spawn(parent);
+        Spawn(parent);
         usable = Model.GetComponent<IUsable>();
         this.player = player;
+        this.usable.Init(player);
     }
  
-    public void spawn(Transform Parent)
+    public GameObject Spawn(Transform Parent)
     {
         Model = Instantiate(ModelPrefab);
         Model.transform.SetParent(Parent, false);
         Model.transform.SetLocalPositionAndRotation(SpawnPoint, Quaternion.Euler(SpawnRotation));
+        return Model;
+    }
+
+    public bool CanUse()
+    {
+        return usable.CanUse();
     }
 
     public void StartUse()
     {
-        usable.StartUse(player);
+        usable.StartUse();
     }
 
     public void EndUse()
     {
         usable.EndUse();
     }
+
 
     public void OnValidate()
     {

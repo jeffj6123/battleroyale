@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
     Rigidbody m_Rigidbody;
     private Animator Anim;
     public float m_Speed = 5f;
-
+    public bool canMove = true;
     void Start()
     {
         //Fetch the Rigidbody from the GameObject with this script attached
@@ -41,7 +41,10 @@ public class Movement : MonoBehaviour
 
         //Apply the movement vector to the current position, which is
         //multiplied by deltaTime and speed for a smooth MovePosition
-        m_Rigidbody.MovePosition(transform.position + m_Input * Time.deltaTime * m_Speed);
+        if(canMove )
+        {
+            m_Rigidbody.MovePosition(transform.position + m_Input * Time.deltaTime * m_Speed);
+        }
         transform.forward = Vector3.Slerp(transform.forward, m_Input, Time.deltaTime * 10f);
     }
 }
