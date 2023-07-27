@@ -23,10 +23,10 @@ AnimatorStateMachine:
     m_Position: {x: 130, y: 520, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5136398038563690797}
-    m_Position: {x: -60, y: 360, z: 0}
+    m_Position: {x: -80, y: 420, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -87913471850281563}
-    m_Position: {x: 190, y: 220, z: 0}
+    m_Position: {x: 140, y: 260, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 5480375037278554163}
@@ -51,7 +51,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: speed
-    m_EventTreshold: 0
+    m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8081854838154861761}
   m_Solo: 0
@@ -60,7 +60,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_ExitTime: 1
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -101,7 +101,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 1H_Ranged_Shoot
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -113,7 +113,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -1964166982296019383, guid: 665dd3b1fb3198d4db6c7e05e242a8a8, type: 3}
+  m_Motion: {fileID: 7400000, guid: 35c4f2fc6e49dff45bbab3f3b2dd7206, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -186,9 +186,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.09086567
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_ExitTime: 0.856595
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -301,6 +301,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
+  - m_ConditionMode: 3
+    m_ConditionEvent: speed
+    m_EventTreshold: 0
   - m_ConditionMode: 4
     m_ConditionEvent: speed
     m_EventTreshold: 0.1
@@ -312,7 +315,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_ExitTime: 1
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -326,7 +329,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: meleeSwinging
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -338,7 +341,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1543802850930067805, guid: 665dd3b1fb3198d4db6c7e05e242a8a8, type: 3}
+  m_Motion: {fileID: 7400000, guid: 354e3541ed076cd40bff60534883aba9, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -361,14 +364,14 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
+  m_CanTransitionToSelf: 0
 --- !u!1102 &6953859041720027196
 AnimatorState:
   serializedVersion: 6

@@ -24,7 +24,7 @@ public class Gun : MonoBehaviour, IUsable
 
     public bool CanUse()
     {
-        return true;
+        return currentCooldown <= 0 && currentAmmo > 0;
     }
 
     public void StartUse()
@@ -41,6 +41,7 @@ public class Gun : MonoBehaviour, IUsable
         currentCooldown = cooldown;
         var bullet = Instantiate(Bullet);
         bullet.transform.SetPositionAndRotation(launchPosition.position, launchPosition.rotation);
+        bullet.transform.eulerAngles = new Vector3(0, launchPosition.rotation.eulerAngles.y, launchPosition.rotation.eulerAngles.z);
         bullet.GetComponent<Bullet>().OnCollsion += HandleBulletCollision;
     }
 

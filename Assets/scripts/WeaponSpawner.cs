@@ -45,7 +45,7 @@ public class WeaponSpawner : MonoBehaviour
     {
         if(currentUsable != null && other.TryGetComponent(out Player player))
         {
-            player.SetUsable(usable);
+            player.SetUsable(Instantiate(usable));
             Destroy(currentUsable);
             currentCooldown = respawonCooldown;
         }

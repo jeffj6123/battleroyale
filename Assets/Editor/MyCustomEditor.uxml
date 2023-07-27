@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Editor/MyCustomEditor.uss?fileID=7433441132597879392&amp;guid=2cf84c86565ea054f86a50815df78d37&amp;type=3#MyCustomEditor" />
+    <ui:Label text="Hello World! From UXML" />
+    <ui:Label text="Hello World! With Style" class="custom-label" />
+    <ui:Button text="Button" display-tooltip-when-elided="true" />
+</ui:UXML>

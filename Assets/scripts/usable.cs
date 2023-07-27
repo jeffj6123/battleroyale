@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,15 +33,13 @@ public class Usable: ScriptableObject
     public Vector3 SpawnRotation;
     private GameObject Model;
     public IUsable usable;
-    private Player player;
     public void SpawnWithPlayer(Transform parent, Player player)
     {
         Spawn(parent);
         usable = Model.GetComponent<IUsable>();
-        this.player = player;
-        this.usable.Init(player);
+        usable.Init(player);
     }
- 
+
     public GameObject Spawn(Transform Parent)
     {
         Model = Instantiate(ModelPrefab);
@@ -49,9 +48,18 @@ public class Usable: ScriptableObject
         return Model;
     }
 
+    public void DestroyCurrentObject()
+    {
+        if (Model != null)
+        {
+            Model.SetActive(false);
+            Destroy(Model);
+        }
+    }
+
     public bool CanUse()
     {
-        return usable.CanUse();
+        return true;// Model && usable.CanUse();
     }
 
     public void StartUse()
